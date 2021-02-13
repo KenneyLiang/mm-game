@@ -23,7 +23,7 @@ public class BoostManager : MonoBehaviour
                 _boostList[randIndex],
                 new Vector3(
                     transform.position.x + 15,
-                    transform.position.y + Random.Range(-1.25f, 1.25f),
+                    transform.position.y + Random.Range(-1.0f, 1.0f),
                     transform.position.z
                 ),
                 Quaternion.identity
