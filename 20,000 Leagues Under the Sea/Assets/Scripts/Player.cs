@@ -6,12 +6,12 @@ public class Player : MonoBehaviour
 {
     public float increaseSpeedBy = 200f;
     public float maxSpeed = 100;
+    public BaseHealth health;
 
     private Rigidbody2D body2D;
     private SpriteRenderer renderer2D;
     private Animator animator;
     private PlayerSubmarineController controller;
-    private BaseHealth health;
 
 
 
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (health.currentHealth <= 0)
         {
             Destroy(gameObject);
@@ -45,4 +46,12 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     if(other.gameObject.tag == "something"){
+    //         health.takeDamage(other.gameObject.someVariable);
+    //         healthBar.setHealth(health.currentHealth);
+    //     }
+    // }
+
 }
