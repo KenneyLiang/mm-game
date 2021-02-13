@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer renderer2D;
     private Animator animator;
     private PlayerSubmarineController controller;
+    private BaseHealth health;
 
 
 
@@ -21,11 +22,16 @@ public class Player : MonoBehaviour
         renderer2D = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         controller = GetComponent<PlayerSubmarineController>();
+        health = GetComponent<BaseHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health.currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
         // current vertical velocity
         var velY = body2D.velocity.y;
 
