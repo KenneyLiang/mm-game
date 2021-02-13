@@ -15,9 +15,7 @@ public class Coin : BaseBoost
     {
         transform.Rotate(0, 4, 0);
 
-        if (transform.position.x < -15) {
-            Destroy(gameObject);
-        }
+        if (transform.position.x < -15) Destroy(gameObject);
     }
 
     public override void PickUp() {
