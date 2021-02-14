@@ -36,6 +36,13 @@ public class ShootingEnemy : BaseEnemy {
         if (health.currentHealth <= 0)
         {
             explode.OnExplode();
+
+            GameObject manager = GameObject.FindGameObjectWithTag("Manager");
+
+            if (manager == null) return;
+
+            GameManager gm = manager.GetComponent<GameManager>();
+            gm.AddToScore(25);
         }
 
         Vector2 screenpos = Camera.main.WorldToScreenPoint(rb2.position);

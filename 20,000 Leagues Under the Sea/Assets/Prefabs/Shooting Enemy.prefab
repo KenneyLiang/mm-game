@@ -162,7 +162,7 @@ MonoBehaviour:
   bulletGameObject: {fileID: 2874958388908519704, guid: 851dcf6b37f7dd94587823eaf113d36c,
     type: 3}
   reloadTime: 1
-  _basicShot: {fileID: 8300000, guid: 8a5dd22dce438ee4d90784a0ce8c75ce, type: 3}
+  _basicShot: {fileID: 8300000, guid: 435a0296d3c5c9244b92bdbd60ea6180, type: 3}
   _audio: {fileID: 8924920053427053304}
 --- !u!114 &1139859338
 MonoBehaviour:

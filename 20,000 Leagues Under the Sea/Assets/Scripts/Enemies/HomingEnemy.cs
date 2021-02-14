@@ -32,6 +32,13 @@ public class HomingEnemy : BaseEnemy {
         if (health.currentHealth <= 0)
         {
             explode.OnExplode();
+
+            GameObject manager = GameObject.FindGameObjectWithTag("Manager");
+
+            if (manager == null) return;
+
+            GameManager gm = manager.GetComponent<GameManager>();
+            gm.AddToScore(15);
         }
 
         if (stopping){
