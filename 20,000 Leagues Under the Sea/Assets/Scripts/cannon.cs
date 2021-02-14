@@ -19,9 +19,15 @@ public class cannon : MonoBehaviour
     [SerializeField] private AudioClip _basicShot;
     [SerializeField] private AudioClip _machinegunShot;
     [SerializeField] private AudioClip _shotgunShot;
+    [SerializeField] private AudioClip _laserShot;
+
+    [SerializeField] private GameObject _laserParticles;
+    private bool _laserPlayed = false;
 
     void FixedUpdate()
     {
+        _lineRenderer.sortingOrder = 8;
+
         Vector2 cannonPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - cannonPosition;
@@ -32,6 +38,8 @@ public class cannon : MonoBehaviour
         } else {
             _lineRenderer.SetPosition(0, transform.position);
             _lineRenderer.SetPosition(1, transform.position);
+
+            _laserPlayed = false;
         }
 
         decrementTimers();
@@ -109,19 +117,30 @@ public class cannon : MonoBehaviour
         int charges = p.GetGunTimer(2);
 
         if (charges > 0) {
+            if (!_laserPlayed) {
+                _audio.PlayOneShot(_laserShot, 0.7f);
+                _laserPlayed = true;
+            }
+            
             Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
 
             if (Physics2D.Raycast(newPos, transform.right, _distanceRay, _mask)) {
                 RaycastHit2D _hit = Physics2D.Raycast(newPos, transform.right);
                 Draw2DRay(newPos, _hit.point);
 
-                Debug.Log(_hit.collider.gameObject);
+                Instantiate(_laserParticles, _hit.point, Quaternion.identity);
+
+                if (_hit.collider.gameObject.CompareTag("Enemy")) {
+                    _hit.collider.gameObject.GetComponent<BaseEnemy>().Damage(5);
+                }
             } else {
                 Draw2DRay(newPos, firePoint.transform.right * _distanceRay);
             }
         } else {
             _lineRenderer.SetPosition(0, transform.position);
             _lineRenderer.SetPosition(1, transform.position);
+
+            _laserPlayed = false;
         }
     }
 

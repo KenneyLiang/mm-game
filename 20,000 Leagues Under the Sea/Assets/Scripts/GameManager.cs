@@ -10,25 +10,22 @@ public class GameManager : MonoBehaviour
     public float maxSpeed = 8.0f;
     public float speed = 1.0f;
 
-
     void FixedUpdate() {
         _frame = ((_frame + 1) % 4);
 
         _score = (_frame == 0) ? _score + 1 : _score;
-        // Debug.Log(_score);
+        ScoreScript.score = _score;
 
         if((_score % 10 == 0) && speed < maxSpeed){
             speed += 0.2f* Time.deltaTime;
             Time.timeScale = speed;
         }
-    
     }
 
     public void AddToScore(int boost)
     {
         _score += boost;
         ScoreScript.score = _score;
-
     }
 
     public int getScore()

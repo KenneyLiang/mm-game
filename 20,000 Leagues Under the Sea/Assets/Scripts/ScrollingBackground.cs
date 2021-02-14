@@ -17,7 +17,7 @@ public class ScrollingBackground : MonoBehaviour
        transform.Translate(Vector2.left * Speed * Time.deltaTime );
 
        if (transform.position.x <= endX){
-           Vector2 pos =new Vector2(startX, transform.position.y);
+           Vector3 pos = new Vector3(startX, transform.position.y, transform.position.z);
            transform.position = pos;
        }
     }

@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 7754608997044298694}
   _sound: {fileID: 3428219864335806421, guid: 66b66ad7dc99a9845b1820dd930dae20, type: 3}
+  _particles: {fileID: 8024107031427955514, guid: bd3c19d3ed306b543bcf765a86e7f2c1,
+    type: 3}
 --- !u!50 &7754608997044298694
 Rigidbody2D:
   serializedVersion: 4
