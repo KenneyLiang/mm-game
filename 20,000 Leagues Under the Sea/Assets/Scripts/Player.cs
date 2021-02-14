@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject _death;
     public GameOver gameOverScreen;
+    public GameOverMusic gameOverMusic;
     public GameManager gameManager;
 
 
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
             explode.OnExplode();
 
             gameOverScreen.SetUp(gameManager.getScore());
-
+            gameOverMusic.SetUp();
         }
         // current vertical velocity
         var velY = body2D.velocity.y;
