@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7754608997044298712}
   - component: {fileID: 7754608997044298715}
   - component: {fileID: 7754608997044298694}
-  - component: {fileID: 7754608997044298713}
+  - component: {fileID: -2832424773950924745}
   m_Layer: 2
   m_Name: InvincibilityBoost
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7754608997044298717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.88, y: 0.02, z: 0}
+  m_LocalPosition: {x: 12.88, y: 0.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7a5ebf7f24bf1d2419dc7b88fb6a042e, type: 3}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 33d93b88349eb7046b84398c833a979c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 7754608997044298694}
+  _sound: {fileID: 3428219864335806421, guid: 66b66ad7dc99a9845b1820dd930dae20, type: 3}
 --- !u!50 &7754608997044298694
 Rigidbody2D:
   serializedVersion: 4
@@ -119,8 +120,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7754608997044298713
-CircleCollider2D:
+--- !u!60 &-2832424773950924745
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,5 +134,31 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.48
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 12, y: 11.43}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.64, y: 0.42999998}
+      - {x: 0.57, y: 0.52}
+      - {x: 0.24, y: 0.64}
+      - {x: -0.21, y: 0.64}
+      - {x: -0.41, y: 0.59}
+      - {x: -0.57, y: 0.51}
+      - {x: -0.64, y: 0.42999998}
+      - {x: -0.64, y: 0.17999999}
+      - {x: -0.59, y: -0.089999996}
+      - {x: -0.51, y: -0.12}
+      - {x: -0.5, y: -0.32}
+      - {x: -0.44, y: -0.42999998}
+      - {x: -0.11, y: -0.64}
+      - {x: 0.12, y: -0.64}
+      - {x: 0.42, y: -0.44}
+      - {x: 0.52, y: -0.32999998}
+      - {x: 0.64, y: 0.16}

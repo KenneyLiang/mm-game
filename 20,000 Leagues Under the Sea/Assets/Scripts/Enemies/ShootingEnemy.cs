@@ -17,8 +17,8 @@ public class ShootingEnemy : BaseEnemy {
     private short shotCounter = 0;
 
     private float curSpeed; 
-    private BaseHealth health;
-    private Explode explode;
+    // private BaseHealth health;
+    // private Explode explode;
 
     public override void Start() {
         base.Start();

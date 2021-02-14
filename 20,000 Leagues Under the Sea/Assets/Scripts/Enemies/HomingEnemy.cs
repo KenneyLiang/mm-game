@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HomingEnemy : BaseEnemy {
     
@@ -10,14 +11,16 @@ public class HomingEnemy : BaseEnemy {
     private bool initLock = false; 
     private bool hasLocked = false;
     private float curSpeed = 0f;
-    private BaseHealth health;
-    private Explode explode;
+    // private BaseHealth health;
+    // private Explode explode;
 
-    
+    public float acc; 
+
     public GameObject lockOn; 
 
     public override void Start() {
         base.Start();
+
         playerTarget = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine("SlowDown");
         health = GetComponent<BaseHealth>();
@@ -57,11 +60,11 @@ public class HomingEnemy : BaseEnemy {
         }
 
         if (hasLocked){
-            if (curSpeed < maxSpeed){
-                curSpeed += speedMultiplier;
-            }
+            curSpeed += acc; 
+
             Vector2 flyDir = (playerTarget.transform.position - this.transform.position).normalized; 
-            rb2.velocity = curSpeed * flyDir; 
+            rb2.velocity = new Vector2(curSpeed * flyDir.x, curSpeed * flyDir.y); 
+            
         }
 
 

@@ -14,6 +14,12 @@ public class cannon : MonoBehaviour
     [SerializeField] LineRenderer _lineRenderer;
     private int _mask = ~(1 << 2);
 
+    [SerializeField] private AudioSource _audio;
+
+    [SerializeField] private AudioClip _basicShot;
+    [SerializeField] private AudioClip _machinegunShot;
+    [SerializeField] private AudioClip _shotgunShot;
+
     void FixedUpdate()
     {
         Vector2 cannonPosition = transform.position;
@@ -49,6 +55,8 @@ public class cannon : MonoBehaviour
 
     void BasicShot() {
         if (_basicTimer < 0) {
+            _audio.PlayOneShot(_basicShot, 0.7f);
+
             Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
             Instantiate(bulletPrefab, newPos, firePoint.rotation);
 
@@ -63,6 +71,8 @@ public class cannon : MonoBehaviour
             int charges = p.GetGunTimer(0);
 
             for (int i = 0; i < charges; i++) {
+                _audio.PlayOneShot(_machinegunShot, 0.7f);
+
                 float newRotation = (firePoint.rotation.z * Mathf.Rad2Deg) + Random.Range(-10f, 10f);
 
                 Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
@@ -80,6 +90,8 @@ public class cannon : MonoBehaviour
             int charges = p.GetGunTimer(1);
 
             for (int i = 0; i < charges; i++) {
+                _audio.PlayOneShot(_shotgunShot, 0.7f);
+
                 for (int j = 0; j < 7; j++) {
                     float newRotation = (firePoint.rotation.z * Mathf.Rad2Deg) + Random.Range(-20f, 20f);
 
