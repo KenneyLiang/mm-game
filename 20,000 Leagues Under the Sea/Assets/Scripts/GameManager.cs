@@ -31,4 +31,9 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public int getScore()
+    {
+        return _score;
+    }
+
 }
