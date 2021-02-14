@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         _score += boost;
         ScoreScript.score = _score;
 
+        UpdateHighScore();
     }
 
     
