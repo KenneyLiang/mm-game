@@ -20,9 +20,11 @@ public class HealBoost : BaseBoost
 
     public override void PickUp() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        BaseHealth health = player.GetComponent<BaseHealth>();
 
         if (player == null) return;
 
         // Heal the player
+        health.restoreHealth(50);
     }
 }
