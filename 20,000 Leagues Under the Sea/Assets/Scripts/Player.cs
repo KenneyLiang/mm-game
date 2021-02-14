@@ -66,6 +66,13 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    public int GetGunTimer(int gunIndex) {
+        if (gunIndex >= _gunCharges.Length) return 0;
+
+        return _gunCharges[gunIndex];
+    }
+
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "EnemyProjectile"){
             health.takeDamage(20);
@@ -103,7 +110,7 @@ public class Player : MonoBehaviour
     IEnumerator Gun(int i) {
         _gunCharges[i]++;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
 
         _gunCharges[i] = (_gunCharges[i] - 1 < 0) ? 0 : _gunCharges[i] -1;
     }
