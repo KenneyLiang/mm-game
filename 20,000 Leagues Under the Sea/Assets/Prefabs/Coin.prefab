@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 7847552551269984542}
   _sound: {fileID: 196668048815857502, guid: 5459f167779c86a4d9d3d3e98487260e, type: 3}
+  _particles: {fileID: 1078900769736792050, guid: d308ff258477c3647885a9c2abb3c474,
+    type: 3}
 --- !u!212 &7847552551269984540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 15e31ccc4eaaf0d4e815db328d05f868, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8420f8b6db45b364db2d6f484447ec0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
