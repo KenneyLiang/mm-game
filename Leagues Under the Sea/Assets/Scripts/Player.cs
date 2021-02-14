@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         // If the move button is pressed, apply force upwards
         if(controller.moving.y > 0){
             if (velY < maxSpeed){
-                body2D.AddForce(new Vector2(0, increaseSpeedBy));
+                body2D.AddForce(new Vector2(0, increaseSpeedBy * 5));
             }
 
             if (rotation <= maxRotation){
