@@ -103,7 +103,7 @@ public class ShootingEnemy : BaseEnemy {
         Transform playerLoc = player.transform;
 
         //Play sound
-        _audio.PlayOneShot(_basicShot,0.5f);
+        _audio.PlayOneShot(_basicShot,0.2f);
 
         Vector2 shotDir = (playerLoc.position - this.transform.position).normalized; 
         GameObject bullet = Instantiate(bulletGameObject, projectileSpawner.transform.position, Quaternion.identity);
