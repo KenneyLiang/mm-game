@@ -210,6 +210,20 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 0}
+--- !u!114 &1736769683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58074170019165842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9410ff35690ce45be4f5b942f12ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debris: {fileID: 6192364468202509177, guid: d8a4383a481dc6447b0c3a27a83ab015, type: 3}
+  totalDebris: 10
 --- !u!1001 &58074170106553854
 PrefabInstance:
   m_ObjectHideFlags: 0

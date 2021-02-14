@@ -24,12 +24,10 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    
-
-    private void onTriggerEnter2D(Collider2D hitInfo)
-    {
-        Debug.Log(hitInfo.name);
-        Destroy(this.gameObject);
-    }
+    // private void onTriggerEnter2D(Collider2D hitInfo)
+    // {
+    //     Debug.Log(hitInfo.name);
+    //     Destroy(this.gameObject);
+    // }
 
 }
