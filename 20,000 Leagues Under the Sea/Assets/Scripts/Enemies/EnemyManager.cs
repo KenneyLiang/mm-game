@@ -5,7 +5,9 @@ public class EnemyManager : MonoBehaviour {
     private enum MovementType {Straight, Wave};
     private MovementType movementType; 
     
-    public GameObject[] enemies; 
+    public GameObject[] enemies;
+
+    private int enemySpeed = 20;
 
     [Range(1,15)]
     public float spawnDelay; 
@@ -62,5 +64,12 @@ public class EnemyManager : MonoBehaviour {
         }
     }
 
+    public void setEnemySpeed(int newSpeed){
+        enemySpeed = newSpeed; 
+    }
+
+    public int getEnemySpeed(){
+        return enemySpeed;
+    }
 
 }
