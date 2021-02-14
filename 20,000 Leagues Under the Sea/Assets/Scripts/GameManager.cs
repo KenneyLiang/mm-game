@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private int _frame;
     private int _score = 0;
 
-    public float maxSpeed = 2.0f;
+    public float maxSpeed = 8.0f;
     public float speed = 1.0f;
 
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log(_score);
 
         if((_score % 50 == 0) && speed < maxSpeed){
-            speed += 0.1f* Time.deltaTime;
+            speed += 0.4f* Time.deltaTime;
             Time.timeScale = speed;
         }
     
