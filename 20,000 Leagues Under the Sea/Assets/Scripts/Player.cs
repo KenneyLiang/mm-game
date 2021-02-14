@@ -86,6 +86,10 @@ public class Player : MonoBehaviour
             Explode boom = enemy.GetComponent<Explode>();
             boom.OnExplode();            
         }
+        
+        if(other.gameObject.tag == "EnemyProjectile"){
+            health.takeDamage(20);
+        }
     }
 
     public void MakeInvincible()
