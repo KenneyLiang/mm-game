@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
             Instantiate(_death, transform.position, Quaternion.identity);       
             explode.OnExplode();
 
+            gameManager.setStopCount(true);
             gameOverScreen.SetUp(gameManager.getScore(), gameManager.getHighScore());
             gameOverMusic.SetUp();
         }

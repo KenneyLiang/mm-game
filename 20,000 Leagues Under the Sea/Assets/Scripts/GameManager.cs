@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private int highScore;
     public float maxSpeed = 8.0f;
     public float speed = 1.0f;
+    private bool stopCount = false;
 
     void Start()
     {
@@ -25,25 +26,40 @@ public class GameManager : MonoBehaviour
     }
 
     void FixedUpdate() {
-        _frame = ((_frame + 1) % 4);
 
-        _score = (_frame == 0) ? _score + 1 : _score;
-        ScoreScript.score = _score;
+        if (stopCount == false)
+        {
 
-        if((_score % 75 == 0) && speed < maxSpeed){
-            speed += 0.025f;
-            Time.timeScale = speed;
-            _score++;
-        }
+            _frame = ((_frame + 1) % 4);
+
+            _score = (_frame == 0) ? _score + 1 : _score;
+            ScoreScript.score = _score;
+            
+
+            if ((_score % 80 == 0) && speed < maxSpeed)
+            {
+                speed += 0.1f * Time.deltaTime;
+                Time.timeScale = speed;
+            }
+            if((_score % 75 == 0) && speed < maxSpeed){
+                speed += 0.025f;
+                Time.timeScale = speed;
+                _score++;
+            }
+        UpdateHighScore();
     }
 
     public void AddToScore(int boost)
     {
-        _score += boost;
-        ScoreScript.score = _score;
 
-        UpdateHighScore();
-    }
+        if (stopCount == false)
+        {
+            _score += boost;
+            ScoreScript.score = _score;
+
+            UpdateHighScore();
+        }
+    }   
 
     
 
@@ -68,4 +84,10 @@ public class GameManager : MonoBehaviour
     {
         return highScore;
     }
+
+    public void setStopCount(bool value)
+    {
+        stopCount = value;
+    }
+
 }
