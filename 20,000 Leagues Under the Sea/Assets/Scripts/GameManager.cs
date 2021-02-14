@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int _frame;
-    private int _score;
+    private int _score = 0;
 
     void FixedUpdate() {
         _frame = ((_frame + 1) % 4);
@@ -17,5 +17,6 @@ public class GameManager : MonoBehaviour
     public void AddToScore(int boost)
     {
         _score += boost;
+        ScoreScript.score = _score;
     }
 }

@@ -17,22 +17,19 @@ public class Bullet : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Time.time - startTime > duration)
-        {
+        if (Time.time - startTime > duration){
             Destroy(this.gameObject);
         }
-
-        
     }
 
+    
 
     private void onTriggerEnter2D(Collider2D hitInfo)
     {
         Debug.Log(hitInfo.name);
         Destroy(this.gameObject);
-
     }
 
 }
