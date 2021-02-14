@@ -146,3 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunNumber: 0
   _rb: {fileID: 5066672850512554434}
+  _sound: {fileID: 37190924614918946, guid: e8c6bad1dfe25344fb146851dded1286, type: 3}

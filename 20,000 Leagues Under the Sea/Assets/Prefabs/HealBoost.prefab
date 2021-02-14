@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 133351745403023596}
+  _sound: {fileID: 7968240334758812777, guid: 353c7195f45172540a907583a9422523, type: 3}
 --- !u!50 &133351745403023596
 Rigidbody2D:
   serializedVersion: 4

@@ -19,9 +19,12 @@ public class Player : MonoBehaviour
 
     private bool _isInvincible = false;
     private IEnumerator _inv;
+    [SerializeField] SpriteRenderer _shield;
 
     private int[] _gunCharges = { 0, 0, 0 };
     private Explode explode;
+
+    [SerializeField] private GameObject _death;
 
     void Start()
     {
@@ -38,7 +41,7 @@ public class Player : MonoBehaviour
 
         if (health.currentHealth <= 0)
         {
-            // Destroy(gameObject);            
+            Instantiate(_death, transform.position, Quaternion.identity);       
             explode.OnExplode();
         }
         // current vertical velocity
@@ -65,6 +68,12 @@ public class Player : MonoBehaviour
             else{
                 transform.Rotate(Vector3.forward * rotateBy);
             }
+        }
+
+        if (_isInvincible) {
+            _shield.enabled = true;
+        } else {
+            _shield.enabled = false;
         }
     }
 
@@ -98,7 +107,7 @@ public class Player : MonoBehaviour
     {
         _isInvincible = true;
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(15);
 
         _isInvincible = false;
     }

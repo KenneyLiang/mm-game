@@ -5,6 +5,7 @@ using UnityEngine;
 public class Invincibility : BaseBoost
 {
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private GameObject _sound;
 
     private float _originalY;
     private float _verticality;
@@ -19,6 +20,8 @@ public class Invincibility : BaseBoost
 
     void FixedUpdate()
     {
+        transform.Rotate(0, 5, 0);
+
         transform.position = new Vector3(
             transform.position.x,
             _originalY + _verticality * Mathf.Sin(Time.time * 2.5f),
@@ -29,6 +32,8 @@ public class Invincibility : BaseBoost
     }
 
     public override void PickUp() {
+        Instantiate(_sound, transform.position, Quaternion.identity);
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player == null) return;

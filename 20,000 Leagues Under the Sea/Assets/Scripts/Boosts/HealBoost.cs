@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealBoost : BaseBoost
 {
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private GameObject _sound;
 
     void Start()
     {
@@ -19,12 +20,13 @@ public class HealBoost : BaseBoost
     }
 
     public override void PickUp() {
+        Instantiate(_sound, transform.position, Quaternion.identity);
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         BaseHealth health = player.GetComponent<BaseHealth>();
 
         if (player == null) return;
 
-        // Heal the player
         health.restoreHealth(50);
     }
 }
