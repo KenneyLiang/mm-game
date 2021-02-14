@@ -22,12 +22,16 @@ public class BaseEnemy : MonoBehaviour
 
     private enum MovementType {Straight, Wave};
     private MovementType movementType; 
+    private BaseHealth health;
+    private Explode explode;
 
     // Use to instantiate the class vars and other properties
     private void init(){
         // Set vel based on movement type 
         rb2 = GetComponent<Rigidbody2D>();
         rb2.gravityScale = 0; 
+        health = GetComponent<BaseHealth>();
+        explode = GetComponent<Explode>();
     }
 
     // Start is called before the first frame update
@@ -37,6 +41,12 @@ public class BaseEnemy : MonoBehaviour
 
     // Update is called once per frame
     public virtual void FixedUpdate(){
+        if (health.currentHealth <= 0)
+        {
+            // Destroy(gameObject);
+            explode.OnExplode();
+        }
+
         float verticalVel = Mathf.Sin(Time.fixedTime) * vertical * verticalMult;
         rb2.velocity = new Vector2(-maxSpeed * speedMultiplier, verticalVel);
 
@@ -50,6 +60,14 @@ public class BaseEnemy : MonoBehaviour
     public void setMovementType(bool wave){
         movementType = wave ? MovementType.Wave : MovementType.Straight; 
         vertical = movementType == MovementType.Wave ? 1 : 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D target) {
+        if (target.gameObject.tag == "PlayerBullet")
+        {
+            health.takeDamage(40);
+            Destroy(target.gameObject);
+        }
     }
 
 

@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private IEnumerator _inv;
 
     private int[] _gunCharges = { 0, 0, 0 };
+    private Explode explode;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         controller = GetComponent<PlayerSubmarineController>();
         health = GetComponent<BaseHealth>();
-        // transform = GetComponent<Transform>();
+        explode = GetComponent<Explode>();
     }
 
     void Update()
@@ -37,7 +38,8 @@ public class Player : MonoBehaviour
 
         if (health.currentHealth <= 0)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);            
+            explode.OnExplode();
         }
         // current vertical velocity
         var velY = body2D.velocity.y;
@@ -63,6 +65,19 @@ public class Player : MonoBehaviour
             else{
                 transform.Rotate(Vector3.forward * rotateBy);
             }
+        }
+    }
+
+
+    public int GetGunTimer(int gunIndex) {
+        if (gunIndex >= _gunCharges.Length) return 0;
+
+        return _gunCharges[gunIndex];
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "EnemyProjectile"){
+            health.takeDamage(20);
         }
     }
 
@@ -97,7 +112,7 @@ public class Player : MonoBehaviour
     IEnumerator Gun(int i) {
         _gunCharges[i]++;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
 
         _gunCharges[i] = (_gunCharges[i] - 1 < 0) ? 0 : _gunCharges[i] -1;
     }

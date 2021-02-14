@@ -11,17 +11,25 @@ public class BaseHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "EnemyProjectile"){
-            takeDamage(50);
-        }
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+        }        
     }
 
     public void takeDamage(int damage){
         currentHealth -= damage;
-        healthBar.setHealth(currentHealth);
+        if (healthBar != null)
+        {
+            healthBar.setHealth(currentHealth);
+        }        
+    }
+
+    public void restoreHealth(int restore){
+        currentHealth = (currentHealth + restore > maxHealth) ? maxHealth : currentHealth + restore;        
+        if (healthBar != null)
+        {
+            healthBar.setHealth(currentHealth);
+        }     
     }
 }
