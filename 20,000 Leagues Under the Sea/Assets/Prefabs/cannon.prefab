@@ -104,7 +104,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 73bca851f77f9264dbd4883d1012ea17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -137,6 +137,9 @@ MonoBehaviour:
   _basicShot: {fileID: 8300000, guid: 8a5dd22dce438ee4d90784a0ce8c75ce, type: 3}
   _machinegunShot: {fileID: 8300000, guid: 4e2a9d2aef2befc499a574618df597f3, type: 3}
   _shotgunShot: {fileID: 8300000, guid: 99ad5458ba1ee5442bb80c5e5a16a4bb, type: 3}
+  _laserShot: {fileID: 8300000, guid: 22bb05b0c52d29149ae46867a47cfc4e, type: 3}
+  _laserParticles: {fileID: 7270155770933608148, guid: 9af8b165402d70442aa85ded7e98d759,
+    type: 3}
 --- !u!120 &2215792242562493405
 LineRenderer:
   m_ObjectHideFlags: 0

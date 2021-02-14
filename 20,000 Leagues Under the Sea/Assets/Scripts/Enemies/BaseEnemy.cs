@@ -70,6 +70,7 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-
-
+    public void Damage(int damage) {
+        health.takeDamage(damage);
+    }
 }
