@@ -1,4 +1,4 @@
-# Twenty Thousand Leagues Under the Sea Game
+# Twenty Thousand Leagues Under the Sea
 
 This game is inspired by the book Twenty Thousand Leagues Under the Sea. In this book, a French oceanographer, Pierre Aronnax, and his assistant Conseil join an expedition organized by the US Navy to hunt down and destroy the unidentified "monster", 20,000 leagues under the Sea. 
 
