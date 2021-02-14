@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private int _frame;
-    private int _score = 1;
-
+    private int _score = 0;
+    private int highScore;
     public float maxSpeed = 8.0f;
     public float speed = 1.0f;
 
@@ -14,6 +14,14 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         speed = 1.0f;
+    }
+
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetInt("HighScore");
+        }
     }
 
     void FixedUpdate() {
@@ -33,11 +41,31 @@ public class GameManager : MonoBehaviour
     {
         _score += boost;
         ScoreScript.score = _score;
+
+        UpdateHighScore();
+    }
+
+    
+
+    public void UpdateHighScore()
+    {
+        if(_score > highScore)
+        {
+            highScore = _score;
+
+            PlayerPrefs.SetInt("HighScore", highScore);
+
+        }
+
     }
 
     public int getScore()
-    {
-        return _score;
+        {
+            return _score;
     }
 
+    public int getHighScore()
+    {
+        return highScore;
+    }
 }
