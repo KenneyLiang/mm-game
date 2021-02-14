@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3575175227740080075}
   - component: {fileID: 1297704576338383111}
   - component: {fileID: 2606063581311103854}
+  - component: {fileID: 1139859338}
+  - component: {fileID: 1139859339}
   m_Layer: 0
   m_Name: Shooting Enemy
   m_TagString: Untagged
@@ -156,6 +158,35 @@ MonoBehaviour:
   bulletGameObject: {fileID: 2874958388908519704, guid: 851dcf6b37f7dd94587823eaf113d36c,
     type: 3}
   reloadTime: 1
+--- !u!114 &1139859338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575175227740080077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9410ff35690ce45be4f5b942f12ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debris: {fileID: 6192364468202509177, guid: d8a4383a481dc6447b0c3a27a83ab015, type: 3}
+  totalDebris: 10
+--- !u!114 &1139859339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575175227740080077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d5e531e30172144a0a5348111dee95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!1 &4102121935424078470
 GameObject:
   m_ObjectHideFlags: 0

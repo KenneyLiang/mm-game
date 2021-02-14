@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
         if (health.currentHealth <= 0)
         {
             Instantiate(_death, transform.position, Quaternion.identity);       
@@ -77,7 +76,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
     public int GetGunTimer(int gunIndex) {
         if (gunIndex >= _gunCharges.Length) return 0;
 
@@ -85,6 +83,20 @@ public class Player : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "EnemyProjectile"){
+            health.takeDamage(20);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Enemy"){
+            health.takeDamage(100);
+            // destroy enemy too
+            GameObject enemy = other.gameObject;
+            Explode boom = enemy.GetComponent<Explode>();
+            boom.OnExplode();            
+        }
+        
         if(other.gameObject.tag == "EnemyProjectile"){
             health.takeDamage(20);
         }
