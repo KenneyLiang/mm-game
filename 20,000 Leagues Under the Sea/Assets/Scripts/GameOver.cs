@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+
 public class GameOver : MonoBehaviour
 {
-    public Text pointsText;
+    public TextMeshProUGUI _pointsText;
 
     public void SetUp(int score)
     {
         gameObject.SetActive(true);
-        pointsText.text = score.ToString();
-
+        _pointsText.SetText(score.ToString());
 
     }
 
