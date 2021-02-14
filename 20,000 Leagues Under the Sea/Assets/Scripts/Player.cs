@@ -17,9 +17,11 @@ public class Player : MonoBehaviour
     private PlayerSubmarineController controller;
     // private Transform transform;
 
+    private bool _isInvincible = false;
+    private IEnumerator _inv;
 
+    private int[] _gunCharges = { 0, 0, 0 };
 
-    // Start is called before the first frame update
     void Start()
     {
         body2D = GetComponent<Rigidbody2D>();
@@ -30,7 +32,6 @@ public class Player : MonoBehaviour
         // transform = GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -63,5 +64,41 @@ public class Player : MonoBehaviour
                 transform.Rotate(Vector3.forward * rotateBy);
             }
         }
+    }
+
+    public void MakeInvincible()
+    {
+        if (!_isInvincible) {
+            _inv = Invincibility();
+            StartCoroutine(_inv);
+        } else {
+            StopCoroutine(_inv);
+
+            _inv = Invincibility();
+            StartCoroutine(_inv);
+        }
+    }
+
+    IEnumerator Invincibility() 
+    {
+        _isInvincible = true;
+
+        yield return new WaitForSeconds(3);
+
+        _isInvincible = false;
+    }
+
+    public void PickupGun(int gunIndex) {
+        if (gunIndex >= _gunCharges.Length) return;
+
+        StartCoroutine(Gun(gunIndex));
+    }
+
+    IEnumerator Gun(int i) {
+        _gunCharges[i]++;
+
+        yield return new WaitForSeconds(5);
+
+        _gunCharges[i] = (_gunCharges[i] - 1 < 0) ? 0 : _gunCharges[i] -1;
     }
 }
