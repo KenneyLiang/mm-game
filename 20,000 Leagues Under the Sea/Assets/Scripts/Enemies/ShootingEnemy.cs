@@ -19,6 +19,9 @@ public class ShootingEnemy : BaseEnemy {
     private float curSpeed; 
     // private BaseHealth health;
     // private Explode explode;
+    [SerializeField] private AudioClip _basicShot;
+    [SerializeField] private AudioSource _audio;
+
 
     public override void Start() {
         base.Start();
@@ -98,6 +101,9 @@ public class ShootingEnemy : BaseEnemy {
     private void shootProjectiles(){
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Transform playerLoc = player.transform;
+
+        //Play sound
+        _audio.PlayOneShot(_basicShot,0.5f);
 
         Vector2 shotDir = (playerLoc.position - this.transform.position).normalized; 
         GameObject bullet = Instantiate(bulletGameObject, projectileSpawner.transform.position, Quaternion.identity);

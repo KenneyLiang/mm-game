@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
         {
             Instantiate(_death, transform.position, Quaternion.identity);       
             explode.OnExplode();
+            
         }
         // current vertical velocity
         var velY = body2D.velocity.y;
@@ -90,7 +91,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Enemy"){
-            health.takeDamage(100);
+            health.takeDamage(25);
             // destroy enemy too
             GameObject enemy = other.gameObject;
             Explode boom = enemy.GetComponent<Explode>();
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour
         }
         
         if(other.gameObject.tag == "EnemyProjectile"){
-            health.takeDamage(20);
+            health.takeDamage(15);
         }
     }
 
