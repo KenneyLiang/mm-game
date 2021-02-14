@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private int _frame;
     private int _score = 0;
 
-    public float maxSpeed = 2.0f;
+    public float maxSpeed = 8.0f;
     public float speed = 1.0f;
 
     void FixedUpdate() {
@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
         _score = (_frame == 0) ? _score + 1 : _score;
         ScoreScript.score = _score;
 
-        if((_score % 50 == 0) && speed < maxSpeed){
-            speed += 0.1f* Time.deltaTime;
+        if((_score % 10 == 0) && speed < maxSpeed){
+            speed += 0.2f* Time.deltaTime;
             Time.timeScale = speed;
         }
     }
@@ -27,4 +27,10 @@ public class GameManager : MonoBehaviour
         _score += boost;
         ScoreScript.score = _score;
     }
+
+    public int getScore()
+    {
+        return _score;
+    }
+
 }

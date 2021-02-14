@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
@@ -26,6 +27,10 @@ public class Player : MonoBehaviour
     private Explode explode;
 
     [SerializeField] private GameObject _death;
+    public GameOver gameOverScreen;
+    public GameOverMusic gameOverMusic;
+    public GameManager gameManager;
+
 
     void Start()
     {
@@ -43,7 +48,9 @@ public class Player : MonoBehaviour
         {
             Instantiate(_death, transform.position, Quaternion.identity);       
             explode.OnExplode();
-            
+
+            gameOverScreen.SetUp(gameManager.getScore());
+            gameOverMusic.SetUp();
         }
         // current vertical velocity
         var velY = body2D.velocity.y;
