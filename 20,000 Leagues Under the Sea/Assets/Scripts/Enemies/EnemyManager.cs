@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour {
     }
 
     private void SpawnEnemies(int[,] formation, int enemy, MovementType movement){
-        float spawnYLoc = Random.Range(1, 10); 
+        float spawnYLoc = Random.Range(3, 7); 
         float offset = 1f;
 
         bool wave = movement == MovementType.Wave; 
