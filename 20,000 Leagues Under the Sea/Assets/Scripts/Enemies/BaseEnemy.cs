@@ -45,6 +45,13 @@ public class BaseEnemy : MonoBehaviour
         if (health.currentHealth <= 0)
         {
             explode.OnExplode();
+
+            GameObject manager = GameObject.FindGameObjectWithTag("Manager");
+
+            if (manager == null) return;
+
+            GameManager gm = manager.GetComponent<GameManager>();
+            gm.AddToScore(10);
         }
 
         float verticalVel = Mathf.Sin(Time.fixedTime) * vertical * verticalMult;

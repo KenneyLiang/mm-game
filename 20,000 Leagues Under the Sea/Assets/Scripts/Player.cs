@@ -92,22 +92,24 @@ public class Player : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "EnemyProjectile"){
+        if(other.gameObject.tag == "EnemyProjectile" && !_isInvincible){
             health.takeDamage(20);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Enemy"){
-            health.takeDamage(25);
-            // destroy enemy too
-            GameObject enemy = other.gameObject;
-            Explode boom = enemy.GetComponent<Explode>();
-            boom.OnExplode();            
-        }
-        
-        if(other.gameObject.tag == "EnemyProjectile"){
-            health.takeDamage(15);
+        if (!_isInvincible) {
+            if(other.gameObject.tag == "Enemy"){
+                health.takeDamage(25);
+                // destroy enemy too
+                GameObject enemy = other.gameObject;
+                Explode boom = enemy.GetComponent<Explode>();
+                boom.OnExplode();            
+            }
+            
+            if(other.gameObject.tag == "EnemyProjectile"){
+                health.takeDamage(15);
+            }
         }
     }
 
