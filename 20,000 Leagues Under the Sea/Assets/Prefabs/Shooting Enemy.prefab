@@ -155,6 +155,7 @@ MonoBehaviour:
   projectileSpawner: {fileID: 6253651356395242413}
   bulletGameObject: {fileID: 2874958388908519704, guid: 851dcf6b37f7dd94587823eaf113d36c,
     type: 3}
+  reloadTime: 1
 --- !u!1 &4102121935424078470
 GameObject:
   m_ObjectHideFlags: 0

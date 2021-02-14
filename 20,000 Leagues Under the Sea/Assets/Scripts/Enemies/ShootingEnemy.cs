@@ -11,6 +11,12 @@ public class ShootingEnemy : BaseEnemy {
     private bool stopping = false;
 
     public GameObject bulletGameObject; 
+    [Range(0,2)]
+    public float reloadTime;
+    private float timeTilFire = 0; 
+    private short shotCounter = 0;
+
+    private float curSpeed; 
 
     public override void Start() {
         base.Start();
@@ -42,11 +48,28 @@ public class ShootingEnemy : BaseEnemy {
         }
 
            //Set Shoot Trigger
-        if (rb2.velocity == new Vector2(0,0) && canShoot){
+        if (rb2.velocity == new Vector2(0,0) && canShoot && shotCounter < 3){
             //Start Shooting Coroutine
-            
-            shootProjectiles();
+            if (timeTilFire < 0){
+                shootProjectiles();
+                timeTilFire = reloadTime;
+                shotCounter ++; 
+            }
+            timeTilFire -= Time.deltaTime;
+
         }
+
+        if (shotCounter >= 3){
+            //Retreat
+            curSpeed += maxSpeed * 0.05f;
+            if (curSpeed > maxSpeed)
+                curSpeed = maxSpeed;
+            rb2.velocity = new Vector2(curSpeed * speedMultiplier, 0);
+            if (screenpos.x >  Screen.width + 30){
+                Destroy(gameObject);
+            }
+        }
+
 
     }
 
@@ -65,5 +88,6 @@ public class ShootingEnemy : BaseEnemy {
         EnemyBullet enemyBullet = bullet.GetComponent<EnemyBullet>();
         enemyBullet.setBulletDir(shotDir);
     }
+
     
 }

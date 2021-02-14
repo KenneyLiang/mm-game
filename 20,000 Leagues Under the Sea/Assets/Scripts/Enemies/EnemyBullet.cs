@@ -14,7 +14,7 @@ public class EnemyBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletTTL = 1000f;
+        bulletTTL = 5f;
         rb2 = GetComponent<Rigidbody2D>();
     }
 
