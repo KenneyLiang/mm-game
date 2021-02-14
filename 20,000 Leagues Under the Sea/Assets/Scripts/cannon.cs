@@ -8,7 +8,11 @@ public class cannon : MonoBehaviour
     public GameObject bulletPrefab;
 
     private int _basicTimer = 0;
-    private int[] _timers = { 0, 0, 0 };
+    private int[] _timers = { 0, 0 };
+
+    [SerializeField] private float _distanceRay = 100;
+    [SerializeField] LineRenderer _lineRenderer;
+    private int _mask = ~(1 << 2);
 
     void FixedUpdate()
     {
@@ -19,6 +23,9 @@ public class cannon : MonoBehaviour
 
         if (Input.GetMouseButton(1)) {
             Shoot();
+        } else {
+            _lineRenderer.SetPosition(0, transform.position);
+            _lineRenderer.SetPosition(1, transform.position);
         }
 
         decrementTimers();
@@ -37,6 +44,7 @@ public class cannon : MonoBehaviour
         BasicShot();
         MachinegunShot();
         ShotgunShot();
+        LaserShot();
     }
 
     void BasicShot() {
@@ -82,5 +90,31 @@ public class cannon : MonoBehaviour
 
             _timers[1] = 30;
         }
+    }
+
+    void LaserShot() {
+        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        int charges = p.GetGunTimer(2);
+
+        if (charges > 0) {
+            Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
+
+            if (Physics2D.Raycast(newPos, transform.right, _distanceRay, _mask)) {
+                RaycastHit2D _hit = Physics2D.Raycast(newPos, transform.right);
+                Draw2DRay(newPos, _hit.point);
+
+                Debug.Log(_hit.collider.gameObject);
+            } else {
+                Draw2DRay(newPos, firePoint.transform.right * _distanceRay);
+            }
+        } else {
+            _lineRenderer.SetPosition(0, transform.position);
+            _lineRenderer.SetPosition(1, transform.position);
+        }
+    }
+
+    void Draw2DRay(Vector2 startPos, Vector2 endPos) {
+        _lineRenderer.SetPosition(0, startPos);
+        _lineRenderer.SetPosition(1, endPos);
     }
 }
