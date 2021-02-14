@@ -11,9 +11,10 @@ public class HomingEnemy : BaseEnemy {
     private bool initLock = false; 
     private bool hasLocked = false;
     private float curSpeed = 0f;
-    private BaseHealth health;
-    private Explode explode;
+    // private BaseHealth health;
+    // private Explode explode;
 
+    public float acc; 
 
     public GameObject lockOn; 
 
@@ -59,11 +60,10 @@ public class HomingEnemy : BaseEnemy {
         }
 
         if (hasLocked){
-            if (curSpeed < maxSpeed){
-                curSpeed += speedMultiplier;
-            }
             Vector2 flyDir = (playerTarget.transform.position - this.transform.position).normalized; 
-            rb2.velocity = curSpeed * flyDir; 
+            rb2.velocity += curSpeed * flyDir; 
+            Debug.Log(rb2.velocity + " " + maxSpeed);
+            
         }
 
 
