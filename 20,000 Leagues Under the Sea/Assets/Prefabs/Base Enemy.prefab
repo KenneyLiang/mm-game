@@ -180,6 +180,8 @@ MonoBehaviour:
   maxSpeed: 6
   attackDamage: 10
   rb2: {fileID: 0}
+  _deathSound: {fileID: 5193551227562668758, guid: 86f9a711ce886c040b449b456ddcfae6,
+    type: 3}
   speedMultiplier: 1
   verticalMult: 1
   vertical: 0

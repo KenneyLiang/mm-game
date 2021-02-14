@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     public float speed = 1.0f;
     private bool stopCount = false;
 
+    void Start()
+    {
+        Time.timeScale = 1.0f;
+        speed = 1.0f;
+    }
+
     private void Awake()
     {
         if (PlayerPrefs.HasKey("HighScore"))
@@ -18,7 +24,6 @@ public class GameManager : MonoBehaviour
             highScore = PlayerPrefs.GetInt("HighScore");
         }
     }
-
 
     void FixedUpdate() {
 
@@ -29,14 +34,19 @@ public class GameManager : MonoBehaviour
 
             _score = (_frame == 0) ? _score + 1 : _score;
             ScoreScript.score = _score;
-            UpdateHighScore();
+            
 
             if ((_score % 80 == 0) && speed < maxSpeed)
             {
                 speed += 0.1f * Time.deltaTime;
                 Time.timeScale = speed;
             }
-        }
+            if((_score % 75 == 0) && speed < maxSpeed){
+                speed += 0.025f;
+                Time.timeScale = speed;
+                _score++;
+            }
+        UpdateHighScore();
     }
 
     public void AddToScore(int boost)

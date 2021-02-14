@@ -99,18 +99,16 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (!_isInvincible) {
-            if(other.gameObject.tag == "Enemy"){
-                health.takeDamage(25);
-                // destroy enemy too
-                GameObject enemy = other.gameObject;
-                Explode boom = enemy.GetComponent<Explode>();
-                boom.OnExplode();            
-            }
-            
-            if(other.gameObject.tag == "EnemyProjectile"){
-                health.takeDamage(15);
-            }
+        if(other.gameObject.tag == "Enemy"){
+            if (!_isInvincible) health.takeDamage(25);
+            // destroy enemy too
+            GameObject enemy = other.gameObject;
+            Explode boom = enemy.GetComponent<Explode>();
+            boom.OnExplode();            
+        }
+        
+        if(other.gameObject.tag == "EnemyProjectile"){
+            if (!_isInvincible) health.takeDamage(15);
         }
     }
 
