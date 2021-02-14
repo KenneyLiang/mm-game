@@ -3,38 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class cannon : MonoBehaviour
-{
-    // Start is called before the first frame update
- 
-    public Transform firepPoint;
+{ 
+    public Transform firePoint;
     public GameObject bulletPrefab;
 
+    private int _basicTimer = 0;
+    private int[] _timers = { 0, 0, 0 };
 
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector2 cannonPosition = transform.position;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - cannonPosition;
         transform.right = direction;
-       // float angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
-        //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Min(Mathf.Max(angle, -270), 90)));
 
-
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (Input.GetMouseButton(1)) {
             Shoot();
         }
 
-        void Shoot()
-        {
+        decrementTimers();
+    }
 
-            Instantiate(bulletPrefab, firepPoint.position, firepPoint.rotation);
+    void decrementTimers() {
+        _basicTimer--;
 
+        for (int i = 0; i < _timers.Length; i++) {
+            _timers[i]--;
         }
+    }
 
+    void Shoot()
+    {
+        BasicShot();
+    }
 
+    void BasicShot() {
+        if (_basicTimer < 0) {
+            Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
+            Instantiate(bulletPrefab, newPos, firePoint.rotation);
+
+            _basicTimer = 15;
+        }
+    }
+
+    void MachinegunShot() {
+        
+    }
+
+    void ShotgunShot() {
 
     }
 }
