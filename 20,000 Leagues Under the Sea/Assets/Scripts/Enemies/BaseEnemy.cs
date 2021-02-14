@@ -43,7 +43,6 @@ public class BaseEnemy : MonoBehaviour
     public virtual void FixedUpdate(){
         if (health.currentHealth <= 0)
         {
-            // Destroy(gameObject);
             explode.OnExplode();
         }
 
