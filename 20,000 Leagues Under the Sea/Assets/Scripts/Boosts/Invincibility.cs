@@ -34,7 +34,6 @@ public class Invincibility : BaseBoost
         if (player == null) return;
 
         Player p = player.GetComponent<Player>();
-        // Make player invincible
-        Debug.Log("invincible!");
+        p.MakeInvincible();
     }
 }

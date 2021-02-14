@@ -38,8 +38,6 @@ public class Enemy : MonoBehaviour {
 			turnTimer = 0;
 		}
 
-
-
 	}
 
 
