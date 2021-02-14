@@ -22,7 +22,7 @@ public class cannon : MonoBehaviour
         //this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Min(Mathf.Max(angle, -270), 90)));
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Shoot();
         }
