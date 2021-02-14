@@ -23,8 +23,8 @@ public class BaseEnemy : MonoBehaviour
 
     private enum MovementType {Straight, Wave};
     private MovementType movementType; 
-    private BaseHealth health;
-    private Explode explode;
+    public BaseHealth health;
+    public Explode explode;
 
     // Use to instantiate the class vars and other properties
     private void init(){
