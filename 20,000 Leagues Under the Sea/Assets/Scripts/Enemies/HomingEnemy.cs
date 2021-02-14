@@ -10,6 +10,8 @@ public class HomingEnemy : BaseEnemy {
     private bool initLock = false; 
     private bool hasLocked = false;
     private float curSpeed = 0f;
+    private BaseHealth health;
+    private Explode explode;
 
     
     public GameObject lockOn; 
@@ -18,10 +20,17 @@ public class HomingEnemy : BaseEnemy {
         base.Start();
         playerTarget = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine("SlowDown");
+        health = GetComponent<BaseHealth>();
+        explode = GetComponent<Explode>();
     }
 
     public override void FixedUpdate()
-    {
+    {        
+        if (health.currentHealth <= 0)
+        {
+            explode.OnExplode();
+        }
+
         if (stopping){
             canLock = true; 
             if (Mathf.Abs(rb2.velocity.x) < 0.2 ){
@@ -56,6 +65,14 @@ public class HomingEnemy : BaseEnemy {
         }
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D target) {
+        if (target.gameObject.tag == "PlayerBullet")
+        {
+            health.takeDamage(40);
+            Destroy(target.gameObject);
+        }
     }
 
 
