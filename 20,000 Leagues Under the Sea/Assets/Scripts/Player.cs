@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private IEnumerator _inv;
 
     private int[] _gunCharges = { 0, 0, 0 };
+    private Explode explode;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         controller = GetComponent<PlayerSubmarineController>();
         health = GetComponent<BaseHealth>();
-        // transform = GetComponent<Transform>();
+        explode = GetComponent<Explode>();
     }
 
     void Update()
@@ -37,7 +38,8 @@ public class Player : MonoBehaviour
 
         if (health.currentHealth <= 0)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);            
+            explode.OnExplode();
         }
         // current vertical velocity
         var velY = body2D.velocity.y;
