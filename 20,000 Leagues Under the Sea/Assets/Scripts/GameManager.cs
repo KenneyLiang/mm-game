@@ -26,8 +26,9 @@ public class GameManager : MonoBehaviour
 
         _score = (_frame == 0) ? _score + 1 : _score;
         ScoreScript.score = _score;
+        UpdateHighScore();
 
-        if((_score % 80 == 0) && speed < maxSpeed){
+        if ((_score % 80 == 0) && speed < maxSpeed){
             speed += 0.1f* Time.deltaTime;
             Time.timeScale = speed;
         }
