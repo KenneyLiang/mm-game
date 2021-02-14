@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HomingEnemy : BaseEnemy {
     
@@ -13,11 +14,15 @@ public class HomingEnemy : BaseEnemy {
     private BaseHealth health;
     private Explode explode;
 
-    
+    public Animator anim; 
+
+
     public GameObject lockOn; 
 
     public override void Start() {
         base.Start();
+
+        anim.GetComponent<Animator>();
         playerTarget = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine("SlowDown");
         health = GetComponent<BaseHealth>();
@@ -28,6 +33,7 @@ public class HomingEnemy : BaseEnemy {
     {        
         if (health.currentHealth <= 0)
         {
+            anim.SetBool("isDead", true);
             explode.OnExplode();
         }
 

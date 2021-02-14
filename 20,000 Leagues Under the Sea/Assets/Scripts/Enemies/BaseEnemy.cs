@@ -8,6 +8,7 @@ public class BaseEnemy : MonoBehaviour
     public float maxSpeed; 
     public float attackDamage;
     public Rigidbody2D rb2; 
+
     
 
     //TODO mess around with these values 
