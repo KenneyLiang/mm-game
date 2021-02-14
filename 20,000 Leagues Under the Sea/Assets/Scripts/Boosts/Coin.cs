@@ -5,7 +5,9 @@ using UnityEngine;
 public class Coin : BaseBoost
 {
     [SerializeField] private Rigidbody2D _rb;
+
     [SerializeField] private GameObject _sound;
+    [SerializeField] private GameObject _particles;
 
     private float _rotation;
 
@@ -24,6 +26,7 @@ public class Coin : BaseBoost
 
     public override void PickUp() {
         Instantiate(_sound, transform.position, Quaternion.identity);
+        Instantiate(_particles, transform.position, Quaternion.identity);
 
         GameObject manager = GameObject.FindGameObjectWithTag("Manager");
 
