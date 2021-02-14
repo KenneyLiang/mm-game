@@ -153,7 +153,7 @@ MonoBehaviour:
   speedMultiplier: 1
   verticalMult: 1
   vertical: 0
-  lockOn: {fileID: 1203973714570090784, guid: 374532f2241200f4a9dc2251ec39cfd0, type: 3}
+  lockOn: {fileID: 2667071264854609134, guid: a7e0289137da60844b01b84b1e29205d, type: 3}
 --- !u!114 &434392939
 MonoBehaviour:
   m_ObjectHideFlags: 0

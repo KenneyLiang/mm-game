@@ -11,7 +11,7 @@ public class LockOn : MonoBehaviour
 
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
-        transform.localScale = new Vector2(2f,2f);
+        transform.localScale = new Vector2(5f,5f);
     }
 
     // TODO play lockon sound 
