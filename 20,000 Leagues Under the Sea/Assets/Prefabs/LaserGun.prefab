@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5469484261831877721}
   - component: {fileID: 5469484261831877720}
   - component: {fileID: 5469484261831877723}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LaserGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

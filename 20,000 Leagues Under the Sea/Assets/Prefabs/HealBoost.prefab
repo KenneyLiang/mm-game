@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 133351745403023596}
   - component: {fileID: 133351745403023598}
   - component: {fileID: 6390719021523920948}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HealBoost
   m_TagString: HealBoost
   m_Icon: {fileID: 0}
