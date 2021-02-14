@@ -18,27 +18,27 @@ public class BaseEnemy : MonoBehaviour
 
 
     // Private vars
-    private float curHealth;
-    private int vertical = 0 ; 
-    private float curSpeed; 
-    
-
+    public int vertical = 0;    
 
     private enum MovementType {Straight, Wave};
     private MovementType movementType; 
 
+    // Use to instantiate the class vars and other properties
+    private void init(){
+        // Set vel based on movement type 
+        rb2 = GetComponent<Rigidbody2D>();
+        rb2.gravityScale = 0; 
+    }
+
     // Start is called before the first frame update
-    void Start()
-    {
+    public virtual void Start(){
         init();     
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
+    public virtual void FixedUpdate(){
         float verticalVel = Mathf.Sin(Time.fixedTime) * vertical * verticalMult;
-        rb2.velocity = new Vector2(-curSpeed * speedMultiplier, verticalVel);
-        
+        rb2.velocity = new Vector2(-maxSpeed * speedMultiplier, verticalVel);
 
         //Destoy enemies if they are offscreen
         Vector2 screenpos = Camera.main.WorldToScreenPoint(rb2.position);
@@ -46,18 +46,12 @@ public class BaseEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // Use to instantiate the class vars and other properties
-    private void init(){
-        // Set vel based on movement type 
-        curSpeed = maxSpeed; 
-        rb2 = GetComponent<Rigidbody2D>();
-        rb2.gravityScale = 0; 
-    }
-
     
     public void setMovementType(bool wave){
         movementType = wave ? MovementType.Wave : MovementType.Straight; 
         vertical = movementType == MovementType.Wave ? 1 : 0;
     }
+
+
+
 }
