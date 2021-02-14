@@ -6,9 +6,20 @@ public class GameManager : MonoBehaviour
 {
     private int _frame;
     private int _score = 0;
-
+    private int highScore;
     public float maxSpeed = 8.0f;
     public float speed = 1.0f;
+
+
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScore = PlayerPrefs.GetInt("HighScore");
+
+        }
+    }
+
 
     void FixedUpdate() {
         _frame = ((_frame + 1) % 4);
@@ -26,11 +37,30 @@ public class GameManager : MonoBehaviour
     {
         _score += boost;
         ScoreScript.score = _score;
+
+    }
+
+    
+
+    public void UpdateHighScore()
+    {
+        if(_score > highScore)
+        {
+            highScore = _score;
+
+            PlayerPrefs.SetInt("HighScore", highScore);
+
+        }
+
     }
 
     public int getScore()
-    {
-        return _score;
+        {
+            return _score;
     }
 
+    public int getHighScore()
+    {
+        return highScore;
+    }
 }

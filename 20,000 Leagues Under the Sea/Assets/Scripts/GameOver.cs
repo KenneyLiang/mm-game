@@ -7,14 +7,22 @@ using TMPro;
 
 public class GameOver : MonoBehaviour
 {
-    public TextMeshProUGUI _pointsText;
+    public TextMeshProUGUI scoresText;
     public AudioSource gameScreenAudio;
+    public TextMeshProUGUI highScoreText;
 
-    public void SetUp(int score)
+    public void SetUp(int score, int highScore)
     {
         gameScreenAudio.Stop();
         gameObject.SetActive(true);
-        _pointsText.SetText(score.ToString());
+
+        if(score > highScore)
+        {
+            highScore = score;
+        }
+
+        scoresText.SetText(score.ToString());
+        highScoreText.SetText(highScore.ToString());
 
     }
 
