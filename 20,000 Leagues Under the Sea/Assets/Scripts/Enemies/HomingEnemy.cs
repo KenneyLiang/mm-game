@@ -18,8 +18,6 @@ public class HomingEnemy : BaseEnemy {
 
     public GameObject lockOn;
 
-    [SerializeField] private GameObject _deathSound;
-
     public override void Start() {
         base.Start();
 
@@ -33,7 +31,6 @@ public class HomingEnemy : BaseEnemy {
     {        
         if (health.currentHealth <= 0)
         {
-            Instantiate(_deathSound, transform.position, Quaternion.identity);
             explode.OnExplode();
 
             GameObject manager = GameObject.FindGameObjectWithTag("Manager");

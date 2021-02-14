@@ -22,8 +22,6 @@ public class ShootingEnemy : BaseEnemy {
     [SerializeField] private AudioClip _basicShot;
     [SerializeField] private AudioSource _audio;
 
-    [SerializeField] private GameObject _deathSound;
-
     public override void Start() {
         base.Start();
         Debug.Log("Start Shooting" + gameObject.name);
@@ -36,7 +34,6 @@ public class ShootingEnemy : BaseEnemy {
     {
         if (health.currentHealth <= 0)
         {
-            Instantiate(_deathSound, transform.position, Quaternion.identity);
             explode.OnExplode();
 
             GameObject manager = GameObject.FindGameObjectWithTag("Manager");
