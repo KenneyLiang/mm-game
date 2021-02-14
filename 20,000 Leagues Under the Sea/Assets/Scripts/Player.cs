@@ -66,10 +66,17 @@ public class Player : MonoBehaviour
         }
     }
 
+
     public int GetGunTimer(int gunIndex) {
         if (gunIndex >= _gunCharges.Length) return 0;
 
         return _gunCharges[gunIndex];
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "EnemyProjectile"){
+            health.takeDamage(20);
+        }
     }
 
     public void MakeInvincible()
