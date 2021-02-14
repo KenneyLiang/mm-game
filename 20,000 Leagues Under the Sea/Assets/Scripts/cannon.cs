@@ -35,6 +35,8 @@ public class cannon : MonoBehaviour
     void Shoot()
     {
         BasicShot();
+        MachinegunShot();
+        ShotgunShot();
     }
 
     void BasicShot() {
@@ -47,10 +49,38 @@ public class cannon : MonoBehaviour
     }
 
     void MachinegunShot() {
-        
+        if (_timers[0] < 0) {
+            Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+            int charges = p.GetGunTimer(0);
+
+            for (int i = 0; i < charges; i++) {
+                float newRotation = (firePoint.rotation.z * Mathf.Rad2Deg) + Random.Range(-10f, 10f);
+
+                Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
+                Instantiate(bulletPrefab, newPos, Quaternion.Euler(0, 0, newRotation));
+            }
+
+            _timers[0] = 3;
+        }
     }
 
     void ShotgunShot() {
+        if (_timers[1] < 0) {
+            Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
+            int charges = p.GetGunTimer(1);
+
+            for (int i = 0; i < charges; i++) {
+                for (int j = 0; j < 7; j++) {
+                    float newRotation = (firePoint.rotation.z * Mathf.Rad2Deg) + Random.Range(-20f, 20f);
+
+                    Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
+                    Instantiate(bulletPrefab, newPos, Quaternion.Euler(0, 0, newRotation));
+                }
+            }
+
+            _timers[1] = 30;
+        }
     }
 }

@@ -66,6 +66,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public int GetGunTimer(int gunIndex) {
+        if (gunIndex >= _gunCharges.Length) return 0;
+
+        return _gunCharges[gunIndex];
+    }
+
     public void MakeInvincible()
     {
         if (!_isInvincible) {
@@ -97,7 +103,7 @@ public class Player : MonoBehaviour
     IEnumerator Gun(int i) {
         _gunCharges[i]++;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(15);
 
         _gunCharges[i] = (_gunCharges[i] - 1 < 0) ? 0 : _gunCharges[i] -1;
     }
