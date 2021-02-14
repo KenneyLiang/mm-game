@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
             Instantiate(_death, transform.position, Quaternion.identity);       
             explode.OnExplode();
 
-            gameOverScreen.SetUp(gameManager.getScore());
+            gameOverScreen.SetUp(gameManager.getScore(), gameManager.getHighScore());
             gameOverMusic.SetUp();
         }
         // current vertical velocity
