@@ -34,19 +34,21 @@ public class GameManager : MonoBehaviour
 
             _score = (_frame == 0) ? _score + 1 : _score;
             ScoreScript.score = _score;
-            
+
 
             if ((_score % 80 == 0) && speed < maxSpeed)
             {
                 speed += 0.1f * Time.deltaTime;
                 Time.timeScale = speed;
             }
-            if((_score % 75 == 0) && speed < maxSpeed){
+            if ((_score % 75 == 0) && speed < maxSpeed)
+            {
                 speed += 0.025f;
                 Time.timeScale = speed;
                 _score++;
             }
-        UpdateHighScore();
+            UpdateHighScore();
+        }
     }
 
     public void AddToScore(int boost)
