@@ -10,6 +10,12 @@ public class Bullet : MonoBehaviour
     float startTime;
     float duration = 4.0f;
 
+    [SerializeField] private GameObject _particles;
+
+    private void OnDestroy() {
+        Instantiate(_particles, transform.position, Quaternion.identity);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

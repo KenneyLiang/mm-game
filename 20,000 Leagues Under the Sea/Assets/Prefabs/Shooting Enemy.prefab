@@ -153,6 +153,7 @@ MonoBehaviour:
   maxSpeed: 4
   attackDamage: 0
   rb2: {fileID: 3575175227740080075}
+  _deathSound: {fileID: 0}
   speedMultiplier: 1
   verticalMult: 1
   vertical: 0
@@ -164,6 +165,8 @@ MonoBehaviour:
   reloadTime: 1
   _basicShot: {fileID: 8300000, guid: 435a0296d3c5c9244b92bdbd60ea6180, type: 3}
   _audio: {fileID: 8924920053427053304}
+  _deathSound: {fileID: 5193551227562668758, guid: 86f9a711ce886c040b449b456ddcfae6,
+    type: 3}
 --- !u!114 &1139859338
 MonoBehaviour:
   m_ObjectHideFlags: 0

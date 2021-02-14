@@ -10,16 +10,19 @@ public class GameManager : MonoBehaviour
     public float maxSpeed = 8.0f;
     public float speed = 1.0f;
 
+    void Start()
+    {
+        Time.timeScale = 1.0f;
+        speed = 1.0f;
+    }
 
     private void Awake()
     {
         if (PlayerPrefs.HasKey("HighScore"))
         {
             highScore = PlayerPrefs.GetInt("HighScore");
-
         }
     }
-
 
     void FixedUpdate() {
         _frame = ((_frame + 1) % 4);
@@ -27,9 +30,10 @@ public class GameManager : MonoBehaviour
         _score = (_frame == 0) ? _score + 1 : _score;
         ScoreScript.score = _score;
 
-        if((_score % 80 == 0) && speed < maxSpeed){
-            speed += 0.1f* Time.deltaTime;
+        if((_score % 75 == 0) && speed < maxSpeed){
+            speed += 0.025f;
             Time.timeScale = speed;
+            _score++;
         }
     }
 

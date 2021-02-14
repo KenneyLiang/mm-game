@@ -136,3 +136,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   rb: {fileID: 4630060092899695835}
+  _particles: {fileID: 1847992856205474627, guid: c77693f6bfb70794697420b8ec97b51f,
+    type: 3}

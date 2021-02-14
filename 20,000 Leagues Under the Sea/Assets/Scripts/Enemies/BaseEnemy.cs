@@ -9,7 +9,7 @@ public class BaseEnemy : MonoBehaviour
     public float attackDamage;
     public Rigidbody2D rb2; 
 
-    
+    [SerializeField] private GameObject _deathSound;
 
     //TODO mess around with these values 
     [Range(0.5f, 1.5f)]    
@@ -44,6 +44,7 @@ public class BaseEnemy : MonoBehaviour
     public virtual void FixedUpdate(){
         if (health.currentHealth <= 0)
         {
+            Instantiate(_deathSound, transform.position, Quaternion.identity);
             explode.OnExplode();
 
             GameObject manager = GameObject.FindGameObjectWithTag("Manager");
