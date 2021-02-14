@@ -87,7 +87,7 @@ public class cannon : MonoBehaviour
                 Instantiate(bulletPrefab, newPos, Quaternion.Euler(0, 0, newRotation));
             }
 
-            _timers[0] = 3;
+            _timers[0] = 6;
         }
     }
 
