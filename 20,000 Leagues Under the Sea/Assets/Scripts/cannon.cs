@@ -81,7 +81,7 @@ public class cannon : MonoBehaviour
             for (int i = 0; i < charges; i++) {
                 _audio.PlayOneShot(_machinegunShot, 0.7f);
 
-                float newRotation = (firePoint.rotation.z * Mathf.Rad2Deg) + Random.Range(-10f, 10f);
+                float newRotation = (firePoint.transform.eulerAngles.z) + Random.Range(-10f, 10f);
 
                 Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
                 Instantiate(bulletPrefab, newPos, Quaternion.Euler(0, 0, newRotation));
@@ -101,7 +101,7 @@ public class cannon : MonoBehaviour
                 _audio.PlayOneShot(_shotgunShot, 0.7f);
 
                 for (int j = 0; j < 7; j++) {
-                    float newRotation = (firePoint.rotation.z * Mathf.Rad2Deg) + Random.Range(-20f, 20f);
+                    float newRotation = (firePoint.transform.eulerAngles.z) + Random.Range(-20f, 20f);
 
                     Vector3 newPos =  firePoint.position + (firePoint.rotation * (new Vector3(1, 0, 0)));
                     Instantiate(bulletPrefab, newPos, Quaternion.Euler(0, 0, newRotation));
