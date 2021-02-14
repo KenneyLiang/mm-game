@@ -60,9 +60,10 @@ public class HomingEnemy : BaseEnemy {
         }
 
         if (hasLocked){
+            curSpeed += acc; 
+
             Vector2 flyDir = (playerTarget.transform.position - this.transform.position).normalized; 
-            rb2.velocity += curSpeed * flyDir; 
-            Debug.Log(rb2.velocity + " " + maxSpeed);
+            rb2.velocity = new Vector2(curSpeed * flyDir.x, curSpeed * flyDir.y); 
             
         }
 

@@ -156,7 +156,7 @@ MonoBehaviour:
   vertical: 0
   health: {fileID: 0}
   explode: {fileID: 0}
-  acc: 3
+  acc: 0.5
   lockOn: {fileID: 2667071264854609134, guid: a7e0289137da60844b01b84b1e29205d, type: 3}
 --- !u!114 &434392939
 MonoBehaviour:
