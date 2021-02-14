@@ -14,14 +14,13 @@ public class BaseHealth : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "EnemyProjectile"){
-            takeDamage(50);
-        }
-    }
-
     public void takeDamage(int damage){
         currentHealth -= damage;
+        healthBar.setHealth(currentHealth);
+    }
+
+    public void restoreHealth(int restore){
+        currentHealth = (currentHealth + restore > maxHealth) ? maxHealth : currentHealth + restore;
         healthBar.setHealth(currentHealth);
     }
 }
