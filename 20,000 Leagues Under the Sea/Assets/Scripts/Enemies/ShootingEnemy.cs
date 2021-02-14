@@ -17,16 +17,24 @@ public class ShootingEnemy : BaseEnemy {
     private short shotCounter = 0;
 
     private float curSpeed; 
+    private BaseHealth health;
+    private Explode explode;
 
     public override void Start() {
         base.Start();
         Debug.Log("Start Shooting" + gameObject.name);
         StartCoroutine("SlowDown");
-
+        health = GetComponent<BaseHealth>();
+        explode = GetComponent<Explode>();
     }
 
     public override void FixedUpdate()
     {
+        if (health.currentHealth <= 0)
+        {
+            explode.OnExplode();
+        }
+
         Vector2 screenpos = Camera.main.WorldToScreenPoint(rb2.position);
         bool canShoot = false;
 
@@ -71,6 +79,14 @@ public class ShootingEnemy : BaseEnemy {
         }
 
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D target) {
+        if (target.gameObject.tag == "PlayerBullet")
+        {
+            health.takeDamage(40);
+            Destroy(target.gameObject);
+        }
     }
 
     IEnumerator SlowDown(){
