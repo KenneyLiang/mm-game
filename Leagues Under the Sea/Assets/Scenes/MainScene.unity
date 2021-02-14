@@ -3040,7 +3040,7 @@ PrefabInstance:
     - target: {fileID: 58074170019165840, guid: aea45d03f08a09b43b88879e3d74c609,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.025012
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 58074170019165840, guid: aea45d03f08a09b43b88879e3d74c609,
         type: 3}
@@ -3112,6 +3112,11 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1297830270}
+    - target: {fileID: 58074170019165854, guid: aea45d03f08a09b43b88879e3d74c609,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8495227528353364997, guid: aea45d03f08a09b43b88879e3d74c609,
         type: 3}
       propertyPath: healthBar
