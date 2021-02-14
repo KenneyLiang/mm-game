@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunNumber: 1
   _rb: {fileID: 6690853791289811948}
+  _sound: {fileID: 37190924614918946, guid: e8c6bad1dfe25344fb146851dded1286, type: 3}
 --- !u!50 &6690853791289811948
 Rigidbody2D:
   serializedVersion: 4

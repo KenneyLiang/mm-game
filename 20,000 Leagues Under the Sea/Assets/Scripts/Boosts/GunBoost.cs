@@ -6,6 +6,7 @@ public class GunBoost : BaseBoost
 {
     [SerializeField] private int _gunNumber;
     [SerializeField] private Rigidbody2D _rb;
+    [SerializeField] private GameObject _sound;
 
     private float _rotation;
 
@@ -23,6 +24,8 @@ public class GunBoost : BaseBoost
     }
 
     public override void PickUp() {
+        Instantiate(_sound, transform.position, Quaternion.identity);
+
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player == null) return;

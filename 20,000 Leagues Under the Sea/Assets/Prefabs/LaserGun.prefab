@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunNumber: 2
   _rb: {fileID: 5469484261831877720}
+  _sound: {fileID: 37190924614918946, guid: e8c6bad1dfe25344fb146851dded1286, type: 3}
 --- !u!212 &5469484261831877721
 SpriteRenderer:
   m_ObjectHideFlags: 0
