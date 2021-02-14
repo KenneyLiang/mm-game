@@ -8,9 +8,11 @@ using TMPro;
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI _pointsText;
+    public AudioSource gameScreenAudio;
 
     public void SetUp(int score)
     {
+        gameScreenAudio.Stop();
         gameObject.SetActive(true);
         _pointsText.SetText(score.ToString());
 
